@@ -11,16 +11,24 @@ namespace WebSiteProje.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly VeriContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(VeriContext context)
         {
-            _logger = logger;
+            _context = context;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var site = _context.Site.ToList();
+            var okul = _context.Okul.ToList();
+            var slider = _context.SliderFoto.ToList();
+            var sosyal = _context.Sosyal.ToList();
+            var Class = new Alldata();
+            Class.Site = site;
+            Class.Okul = okul;
+            Class.SliderFoto = slider;
+            Class.Sosyal = sosyal;
+            return View(Class);
         }
 
         public IActionResult Privacy()
