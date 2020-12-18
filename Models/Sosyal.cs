@@ -10,11 +10,18 @@ namespace WebSiteProje.Models
     {
         [Key]
         public int sosyalId { get; set; }
-        public string sosyalUrl { get; set; }
-        public string sosyalTur { get; set; }
-        public string sosyalInfo { get; set; }
-        public string sosyalFooter { get; set; }
 
+        [Display(Name = "URL")]
+        public string sosyalUrl { get; set; }
+
+        [Display(Name = "Medya Türü")]
+        public string sosyalTur { get; set; }
+
+        [Display(Name = "Bilgi")]
+        public string sosyalInfo { get; set; }
+
+        [Display(Name = "Footer")]
+        public string sosyalFooter { get; set; }
 
     }
 }

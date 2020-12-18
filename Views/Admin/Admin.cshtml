@@ -1,0 +1,173 @@
+﻿@model IEnumerable<WebSiteProje.Models.Site>
+
+@{
+    ViewData["Title"] = "Admin";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Admin</h1>
+    <h3>Site Bilgileri</h3>
+</div>
+<div>
+    <div class="card-body">
+        <p>
+            @foreach (var item in Model)
+            {
+                <a asp-action="Create">Oluştur </a><br />
+                <a asp-action="Edit" asp-route-id="@item.MyId">Düzenle </a><br />
+                <a asp-action="Details" asp-route-id="@item.MyId"> Detaylar</a><br />
+                <a asp-action="Delete" asp-route-id="@item.MyId"> Sil</a><br />
+            }
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h6>Kişisel Bilgiler</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.isim)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.meslek)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dogumTarihi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dogumYeri)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.egitimDurumu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.egitimBolumu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.diller)
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.isim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.meslek)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dogumTarihi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dogumYeri)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.egitimDurumu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.egitimBolumu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.diller)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="card-body">
+            <h6>Hakkında</h6>
+            @foreach (var item in Model)
+            {
+                <div>
+                    @Html.DisplayFor(modelItem => item.hakkımda)
+                </div>
+            }
+        </div>
+        <div class="card-body">
+            <h6>Fotoğraf Bilgileri</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.profileFotoUrl)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.backFotoUrl)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.sliderFotoUrl)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.sliderFotoBaslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.sliderFotoAciklama)
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.profileFotoUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.backFotoUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sliderFotoUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sliderFotoBaslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sliderFotoAciklama)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="card-body">
+            <h6>İletişim Bilgileri</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.adres)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.adresUrl)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.emailUrl)
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.adres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.adresUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emailUrl)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
