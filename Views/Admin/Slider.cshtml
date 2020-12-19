@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebSiteProje.Models.SliderFoto>
+
+@{
+    ViewData["Title"] = "Okul";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h3>Slider Bilgileri</h3>
+</div>
+<div>
+    <div class="card-body">
+        <p>
+            <a asp-action="SliderCreate">Oluştur </a><br />
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h6>Slider Bilgileri</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.fotoUrl)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.fotoBaslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.fotoAciklama)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fotoUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fotoBaslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fotoAciklama)
+                        </td>
+                        <td>
+                            <a asp-action="SliderEdit" asp-route-id="@item.sliderFotoId">Edit</a> |
+                            <a asp-action="SliderDetails" asp-route-id="@item.sliderFotoId">Details</a> |
+                            <a asp-action="SliderDelete" asp-route-id="@item.sliderFotoId">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
