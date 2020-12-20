@@ -19,7 +19,8 @@ namespace WebSiteProje.Models
         public DbSet<Foto> Foto { get; set; }
         public DbSet<Okul> Okul { get; set; }
         public DbSet<SliderFoto> SliderFoto { get; set; }
-        public DbSet<WebSiteProje.Models.Sosyal> Sosyal { get; set; }
+        public DbSet<Icerik> Icerik { get; set; }
+        public DbSet<Sosyal> Sosyal { get; set; }
 
     }
 }

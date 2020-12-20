@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebSiteProje.Models.Site>
+﻿@model WebSiteProje.Models.Alldata
 
 @{
     ViewData["Title"] = "Admin";
@@ -11,12 +11,14 @@
 <div>
     <div class="card-body">
         <p>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Site)
             {
-                <a asp-action="Create">Oluştur </a><br />
-                <a asp-action="Edit" asp-route-id="@item.MyId">Düzenle </a><br />
-                <a asp-action="Details" asp-route-id="@item.MyId"> Detaylar</a><br />
-                <a asp-action="Delete" asp-route-id="@item.MyId"> Sil</a><br />
+                <td>
+                    <a asp-action="Create">Oluştur </a> |
+                    <a asp-action="Edit" asp-route-id="@item.MyId">Düzenle </a> |
+                    <a asp-action="Details" asp-route-id="@item.MyId"> Detaylar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MyId"> Sil</a>
+                </td>
             }
         </p>
     </div>
@@ -27,29 +29,29 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.isim)
+                            @Html.DisplayNameFor(model => model.site.isim)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.meslek)
+                            @Html.DisplayNameFor(model => model.site.meslek)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.dogumTarihi)
+                            @Html.DisplayNameFor(model => model.site.dogumTarihi)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.dogumYeri)
+                            @Html.DisplayNameFor(model => model.site.dogumYeri)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.egitimDurumu)
+                            @Html.DisplayNameFor(model => model.site.egitimDurumu)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.egitimBolumu)
+                            @Html.DisplayNameFor(model => model.site.egitimBolumu)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.diller)
+                            @Html.DisplayNameFor(model => model.site.diller)
                         </th>
                     </tr>
                 </thead>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Site)
                 {
                     <tr>
                         <td>
@@ -79,94 +81,259 @@
         </div>
         <div class="card-body">
             <h6>Hakkında</h6>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Site)
             {
                 <div>
                     @Html.DisplayFor(modelItem => item.hakkımda)
                 </div>
             }
         </div>
-        <div class="card-body">
-            <h6>Fotoğraf Bilgileri</h6>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.profileFotoUrl)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.backFotoUrl)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.sliderFotoUrl)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.sliderFotoBaslik)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.sliderFotoAciklama)
-                        </th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
-                {
-                    <tr>
+        <div class="card">
+            <div class="card-body">
+                <h6>Okul Bilgileri</h6>
+                <p>
+                    <a asp-action="OkulCreate">Oluştur </a><br />
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.okul.okulAd)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.okul.okulTarih)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.okul.okulTur)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.okul.okulInfo)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Okul)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.okulAd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.okulTarih)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.okulTur)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.okulInfo)
+                                </td>
+                                <td>
+                                    <a asp-action="OkulEdit" asp-route-id="@item.okulId">Düzenle</a> |
+                                    <a asp-action="OkulDetails" asp-route-id="@item.okulId">Detaylar</a> |
+                                    <a asp-action="OkulDelete" asp-route-id="@item.okulId">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <h6>Fotoğraf Bilgileri</h6>
+                <p>
+                    @foreach (var item in Model.Site)
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.profileFotoUrl)
+                            <a asp-action="Edit" asp-route-id="@item.MyId">Düzenle </a> |
+                            <a asp-action="Details" asp-route-id="@item.MyId"> Detaylar</a>
                         </td>
+                    }
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.profileFotoUrl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.backFotoUrl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.sliderFotoUrl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.sliderFotoBaslik)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.sliderFotoAciklama)
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.Site)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.profileFotoUrl)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.backFotoUrl)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sliderFotoUrl)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sliderFotoBaslik)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sliderFotoAciklama)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h6>Slider Bilgileri</h6>
+                    <p>
+                        <a asp-action="SliderCreate">Oluştur </a><br />
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sliderfoto.fotoUrl)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sliderfoto.fotoBaslik)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sliderfoto.fotoAciklama)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.SliderFoto)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fotoUrl)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fotoBaslik)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fotoAciklama)
+                                    </td>
+                                    <td>
+                                        <a asp-action="SliderEdit" asp-route-id="@item.sliderFotoId">Düzenle</a> |
+                                        <a asp-action="SliderDetails" asp-route-id="@item.sliderFotoId">Detaylar</a> |
+                                        <a asp-action="SliderDelete" asp-route-id="@item.sliderFotoId">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-body">
+                <h6>İletişim Bilgileri</h6>
+                <p>
+                    @foreach (var item in Model.Site)
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.backFotoUrl)
+                            <a asp-action="Edit" asp-route-id="@item.MyId">Düzenle </a> |
+                            <a asp-action="Details" asp-route-id="@item.MyId"> Detaylar</a>
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sliderFotoUrl)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sliderFotoBaslik)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sliderFotoAciklama)
-                        </td>
-                    </tr>
-                }
-            </table>
-        </div>
-        <div class="card-body">
-            <h6>İletişim Bilgileri</h6>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.adres)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.adresUrl)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.email)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.emailUrl)
-                        </th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.adres)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.adresUrl)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.emailUrl)
-                        </td>
-                    </tr>
-                }
-            </table>
+                    }
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.adres)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.adresUrl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.site.emailUrl)
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.Site)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.adres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.adresUrl)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.emailUrl)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h6>Sosyal Medya Bilgileri</h6>
+                    <p>
+                        <a asp-action="SosyalCreate">Oluştur </a><br />
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sosyal.sosyalUrl)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sosyal.sosyalTur)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sosyal.sosyalInfo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sosyal.sosyalFooter)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Sosyal)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sosyalUrl)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sosyalTur)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sosyalInfo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sosyalFooter)
+                                    </td>
+                                    <td>
+                                        <a asp-action="SosyalEdit" asp-route-id="@item.sosyalId">Düzenle</a> |
+                                        <a asp-action="SosyalDetails" asp-route-id="@item.sosyalId">Detaylar</a> |
+                                        <a asp-action="SosyalDelete" asp-route-id="@item.sosyalId">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -16,5 +16,15 @@ namespace WebSiteProje.Models
         public List<Sosyal> Sosyal { get; set; }
         public List<Kullanici> Kullanici { get; set; }
         public List<SliderFoto> SliderFoto { get; set; }
+
+        public Site site { get; set; }
+        public Foto foto { get; set; }
+        public Okul okul { get; set; }
+        public Yorum yorum { get; set; }
+        public Blog blog { get; set; }
+        public Icerik icerik { get; set; }
+        public Sosyal sosyal { get; set; }
+        public Kullanici kullanici { get; set; }
+        public SliderFoto sliderfoto { get; set; }
     }
 }

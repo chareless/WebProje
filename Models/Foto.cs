@@ -11,9 +11,16 @@ namespace WebSiteProje.Models
         [Key]
         public int fotoId { get; set; }
 
+        [Display(Name = "URL")]
         public string fotoUrl { get; set; }
+
+        [Display(Name = "Başlık")]
         public string fotoBaslik { get; set; }
+
+        [Display(Name = "Açıklama")]
         public string fotoAciklama { get; set; }
+
+        [Display(Name = "Boyut")]
         public string fotoWidth { get; set; }
     }
 }

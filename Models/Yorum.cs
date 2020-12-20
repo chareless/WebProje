@@ -11,6 +11,7 @@ namespace WebSiteProje.Models
         [Key]
         public int yorumId { get; set; }
 
+        public string icerik { get; set; }
         public Kullanici kullanici { get; set; }
         public Blog blog { get; set; }
     }

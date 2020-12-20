@@ -1,119 +1,124 @@
 ﻿@model WebSiteProje.Models.Site
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Details";
     Layout = "_LayoutAdmin";
 }
 
 <div class="card-body">
-    <h1>Düzenle</h1>
+    <h1>Detaylar</h1>
     <h3>Site Bilgileri</h3>
 </div>
-<hr />
 <div class="card">
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Edit">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="MyId" />
-                    <div class="form-group">
-                        <label asp-for="isim" class="control-label"></label>
-                        <input asp-for="isim" class="form-control" />
-                        <span asp-validation-for="isim" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="meslek" class="control-label"></label>
-                        <input asp-for="meslek" class="form-control" />
-                        <span asp-validation-for="meslek" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="profileFotoUrl" class="control-label"></label>
-                        <input asp-for="profileFotoUrl" class="form-control" />
-                        <span asp-validation-for="profileFotoUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="backFotoUrl" class="control-label"></label>
-                        <input asp-for="backFotoUrl" class="form-control" />
-                        <span asp-validation-for="backFotoUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="hakkımda" class="control-label"></label>
-                        <input asp-for="hakkımda" class="form-control" />
-                        <span asp-validation-for="hakkımda" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="dogumTarihi" class="control-label"></label>
-                        <input asp-for="dogumTarihi" class="form-control" />
-                        <span asp-validation-for="dogumTarihi" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="dogumYeri" class="control-label"></label>
-                        <input asp-for="dogumYeri" class="form-control" />
-                        <span asp-validation-for="dogumYeri" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="egitimDurumu" class="control-label"></label>
-                        <input asp-for="egitimDurumu" class="form-control" />
-                        <span asp-validation-for="egitimDurumu" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="egitimBolumu" class="control-label"></label>
-                        <input asp-for="egitimBolumu" class="form-control" />
-                        <span asp-validation-for="egitimBolumu" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="diller" class="control-label"></label>
-                        <input asp-for="diller" class="form-control" />
-                        <span asp-validation-for="diller" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="adres" class="control-label"></label>
-                        <input asp-for="adres" class="form-control" />
-                        <span asp-validation-for="adres" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="adresUrl" class="control-label"></label>
-                        <input asp-for="adresUrl" class="form-control" />
-                        <span asp-validation-for="adresUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="email" class="control-label"></label>
-                        <input asp-for="email" class="form-control" />
-                        <span asp-validation-for="email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="emailUrl" class="control-label"></label>
-                        <input asp-for="emailUrl" class="form-control" />
-                        <span asp-validation-for="emailUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="sliderFotoUrl" class="control-label"></label>
-                        <input asp-for="sliderFotoUrl" class="form-control" />
-                        <span asp-validation-for="sliderFotoUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="sliderFotoBaslik" class="control-label"></label>
-                        <input asp-for="sliderFotoBaslik" class="form-control" />
-                        <span asp-validation-for="sliderFotoBaslik" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="sliderFotoAciklama" class="control-label"></label>
-                        <input asp-for="sliderFotoAciklama" class="form-control" />
-                        <span asp-validation-for="sliderFotoAciklama" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Kaydet" class="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
-        </div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.isim)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.isim)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.meslek)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.meslek)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.profileFotoUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.profileFotoUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.backFotoUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.backFotoUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.hakkımda)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.hakkımda)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.dogumTarihi)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.dogumTarihi)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.dogumYeri)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.dogumYeri)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.egitimDurumu)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.egitimDurumu)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.egitimBolumu)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.egitimBolumu)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.diller)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.diller)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.adres)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.adres)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.adresUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.adresUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.emailUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.emailUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sliderFotoUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sliderFotoUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sliderFotoBaslik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sliderFotoBaslik)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sliderFotoAciklama)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sliderFotoAciklama)
+            </dd>
+        </dl>
     </div>
 </div>
 <div class="card-body">
+    <a asp-action="Edit" asp-route-id="@Model.MyId">Düzenle</a> |
     <a asp-action="Admin">Geri</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
