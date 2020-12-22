@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,16 +11,29 @@ namespace WebSiteProje.Models
     {
         [Key]
         public int icerikId { get; set; }
-        public string anaBaslik { get; set; }
-        public string fotoUrl { get; set; }
-        public string anaBaslikIcerik { get; set; }
-        public string anaBaslikMadde { get; set; }
-        public string konuBaslik { get; set; }
-        public string altBaslikIcerik { get; set; }
-        public string altBaslikMadde { get; set; }
-        public string duzenlemeTarihi { get; set; }
 
-        public ICollection<Blog> blog { get; set; }
+        [Display(Name = "Başlık")]
+        public string baslik { get; set; }
+
+        [Display(Name = "ID Etiket")]
+
+        public string idTag { get; set; }
+
+        [Display(Name = "Üst İçerik")]
+        public string metinUst { get; set; }
+
+        [Display(Name = "Alt İçerik")]
+        public string metinAlt { get; set; }
+
+        [Display(Name = "Madde(¿ ile split yapar)")]
+        public string madde { get; set; }
+
+        [Display(Name = "BlogID")]
+        public int blogId { get; set; }
+
+        [ForeignKey("blogId")]
+        public Blog Blog { get; set; }
+
 
     }
 }

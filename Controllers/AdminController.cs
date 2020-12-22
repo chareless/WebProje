@@ -550,5 +550,418 @@ namespace WebSiteProje.Controllers
         {
             return _context.SliderFoto.Any(e => e.sliderFotoId == id);
         }
+
+
+        //FOTO BİLGİLERİ
+
+
+        // GET: Fotoes
+        public async Task<IActionResult> Foto()
+        {
+            return View(await _context.Foto.ToListAsync());
+        }
+
+        // GET: Fotoes/Details/5
+        public async Task<IActionResult> FotoDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var foto = await _context.Foto
+                .FirstOrDefaultAsync(m => m.fotoId == id);
+            if (foto == null)
+            {
+                return NotFound();
+            }
+
+            return View(foto);
+        }
+
+        // GET: Fotoes/Create
+        public IActionResult FotoCreate()
+        {
+            return View();
+        }
+
+        // POST: Fotoes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FotoCreate([Bind("fotoId,fotoUrl,fotoBaslik,fotoAciklama,fotoWidth")] Foto foto)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(foto);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Foto));
+            }
+            return View(foto);
+        }
+
+        // GET: Fotoes/Edit/5
+        public async Task<IActionResult> FotoEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var foto = await _context.Foto.FindAsync(id);
+            if (foto == null)
+            {
+                return NotFound();
+            }
+            return View(foto);
+        }
+
+        // POST: Fotoes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FotoEdit(int id, [Bind("fotoId,fotoUrl,fotoBaslik,fotoAciklama,fotoWidth")] Foto foto)
+        {
+            if (id != foto.fotoId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(foto);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!FotoExists(foto.fotoId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Foto));
+            }
+            return View(foto);
+        }
+
+        // GET: Fotoes/Delete/5
+        public async Task<IActionResult> FotoDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var foto = await _context.Foto
+                .FirstOrDefaultAsync(m => m.fotoId == id);
+            if (foto == null)
+            {
+                return NotFound();
+            }
+
+            return View(foto);
+        }
+
+        // POST: Fotoes/Delete/5
+        [HttpPost, ActionName("FotoDelete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FotoDeleteConfirmed(int id)
+        {
+            var foto = await _context.Foto.FindAsync(id);
+            _context.Foto.Remove(foto);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Foto));
+        }
+
+        private bool FotoExists(int id)
+        {
+            return _context.Foto.Any(e => e.fotoId == id);
+        }
+
+
+        //BLOG BİLGİLERİ
+
+
+        // GET: Blogs
+        public async Task<IActionResult> Blog()
+        {
+            return View(await _context.Blog.ToListAsync());
+        }
+
+        // GET: Blogs/Details/5
+        public async Task<IActionResult> BlogDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var blog = await _context.Blog
+                .FirstOrDefaultAsync(m => m.blogId == id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+
+            return View(blog);
+        }
+
+        // GET: Blogs/Create
+        public IActionResult BlogCreate()
+        {
+            return View();
+        }
+
+        // POST: Blogs/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BlogCreate([Bind("blogId,idName,blogTur,baslik,altBaslik,aciklama,uyari,fotoUrl,videoUrl,iframeUrl,icerikLinki,linkAciklama,eklemeTarihi,degistirmeTarihi,surum,boyut")] Blog blog)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(blog);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Blog));
+            }
+            return View(blog);
+        }
+
+        // GET: Blogs/Edit/5
+        public async Task<IActionResult> BlogEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var blog = await _context.Blog.FindAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            return View(blog);
+        }
+
+        // POST: Blogs/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BlogEdit(int id, [Bind("blogId,idName,blogTur,baslik,altBaslik,aciklama,uyari,fotoUrl,videoUrl,iframeUrl,icerikLinki,linkAciklama,eklemeTarihi,degistirmeTarihi,surum,boyut")] Blog blog)
+        {
+            if (id != blog.blogId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(blog);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BlogExists(blog.blogId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Blog));
+            }
+            return View(blog);
+        }
+
+        // GET: Blogs/Delete/5
+        public async Task<IActionResult> BlogDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var blog = await _context.Blog
+                .FirstOrDefaultAsync(m => m.blogId == id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+
+            return View(blog);
+        }
+
+        // POST: Blogs/Delete/5
+        [HttpPost, ActionName("BlogDelete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BlogDeleteConfirmed(string name)
+        {
+            var blog = await _context.Blog.FindAsync(name);
+            _context.Blog.Remove(blog);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Blog));
+        }
+
+        private bool BlogExists(int id)
+        {
+            return _context.Blog.Any(e => e.blogId == id);
+        }
+
+
+        //İÇERİK BİLGİLERİ
+
+
+
+        // GET: Iceriks
+        public async Task<IActionResult> Icerik()
+        {
+            var veriContext = _context.Icerik.Include(i => i.Blog);
+            return View(await veriContext.ToListAsync());
+        }
+
+        // GET: Iceriks/Details/5
+        public async Task<IActionResult> IcerikDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var icerik = await _context.Icerik
+                .Include(i => i.Blog)
+                .FirstOrDefaultAsync(m => m.icerikId == id);
+            if (icerik == null)
+            {
+                return NotFound();
+            }
+
+            return View(icerik);
+        }
+
+        // GET: Iceriks/Create
+        public IActionResult IcerikCreate()
+        {
+            ViewData["blogId"] = new SelectList(_context.Blog, "blogId", "blogId");
+            return View();
+        }
+
+        // POST: Iceriks/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IcerikCreate([Bind("icerikId,baslik,idTag,metinUst,metinAlt,madde,blogId")] Icerik icerik)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(icerik);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Icerik));
+            }
+            ViewData["blogId"] = new SelectList(_context.Blog, "blogId", "blogId", icerik.blogId);
+            return View(icerik);
+        }
+
+        // GET: Iceriks/Edit/5
+        public async Task<IActionResult> IcerikEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var icerik = await _context.Icerik.FindAsync(id);
+            if (icerik == null)
+            {
+                return NotFound();
+            }
+            ViewData["blogId"] = new SelectList(_context.Blog, "blogId", "blogId", icerik.blogId);
+            return View(icerik);
+        }
+
+        // POST: Iceriks/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IcerikEdit(int id, [Bind("icerikId,baslik,idTag,metinUst,metinAlt,madde,blogId")] Icerik icerik)
+        {
+            if (id != icerik.icerikId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(icerik);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!IcerikExists(icerik.icerikId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Icerik));
+            }
+            ViewData["blogId"] = new SelectList(_context.Blog, "blogId", "blogId", icerik.blogId);
+            return View(icerik);
+        }
+
+        // GET: Iceriks/Delete/5
+        public async Task<IActionResult> IcerikDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var icerik = await _context.Icerik
+                .Include(i => i.Blog)
+                .FirstOrDefaultAsync(m => m.icerikId == id);
+            if (icerik == null)
+            {
+                return NotFound();
+            }
+
+            return View(icerik);
+        }
+
+        // POST: Iceriks/Delete/5
+        [HttpPost, ActionName("IcerikDelete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IcerikDeleteConfirmed(int id)
+        {
+            var icerik = await _context.Icerik.FindAsync(id);
+            _context.Icerik.Remove(icerik);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Icerik));
+        }
+
+        private bool IcerikExists(int id)
+        {
+            return _context.Icerik.Any(e => e.icerikId == id);
+        }
     }
 }

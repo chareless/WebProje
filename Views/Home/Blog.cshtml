@@ -23,36 +23,44 @@
                     <div class="card" data-aos="fade-up" data-aos-offset="10">
                         <div class="row">
                             <div class="card-body col-lg-12 col-md-12">
-                                <div class="h4 mt-0 title">@item.baslik</div>
+                                @if (item.fotoUrl == null)
+                                {
+                                    <div class="h4 mt-0 title"> <a href="../Blog/Icerik?text=@item.idName">@item.baslik</a></div>
+                                }
+                                else
+                                {
+                                    <div class="h4 mt-0 title">@item.baslik</div>
+                                }
                                 <p class="category text-black">@item.altBaslik</p>
-                                 @if (item.iframeUrl != null)
-                                  {
+                                @if (item.iframeUrl != null)
+                                {
                                     <div class="card-body">
                                         <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive embed-responsive-16by9" src="@item.iframeUrl"></iframe></div>
                                     </div>
-                                  }
+                                }
                                 @if (item.fotoUrl != null)
-                                 {
+                                {
+
                                     <div class="card-body">
-                                        <a asp-area="" asp-controller="Home" asp-action="@item.icerikYonlendirmeUrl"><img src="@item.fotoUrl"></a>
+                                        <a href="../Blog/Icerik?text=@item.idName"><img src="@item.fotoUrl"></a>
                                     </div>
-                                 }
-                            <div class="card-body">
-                                <p><strong>Açıklama : </strong> @item.aciklama</p>
+                                }
+                                <div class="card-body">
+                                    <p><strong>Açıklama : </strong> @item.aciklama</p>
                                     @if (item.uyari != null)
-                                     {
+                                    {
                                         <p><strong>UYARI : @item.uyari</strong></p>
-                                     }
+                                    }
                                     <p><strong>@item.linkAciklama : <a href="@item.icerikLinki" target="_blank">@item.icerikLinki</a></strong>@item.boyut</p>
                                     <p>Çıkış Tarihi : <h7>@item.eklemeTarihi</h7></p>
                                     @if (item.degistirmeTarihi != null)
-                                     {
+                                    {
                                         <p>Son Değiştirilme Tarihi : <h7>@item.degistirmeTarihi</h7></p>
-                                     }
+                                    }
                                     @if (item.surum != null)
-                                     {
+                                    {
                                         <p>Sürüm : <h7>@item.surum</h7></p>
-                                     }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -73,7 +81,7 @@
                                     <div class="col-sm-6">
                                         <div class="col-sm-6">
                                             <div class="card-body">
-                                                <a asp-area="" asp-controller="Home" asp-action="@item.icerikYonlendirmeUrl"><img src="@item.fotoUrl"></a>
+                                                <a href="../Blog/Icerik?text=@item.idName"><img src="@item.fotoUrl"></a>
                                             </div>
                                         </div>
                                     </div>

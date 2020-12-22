@@ -30,10 +30,28 @@ namespace WebSiteProje.Controllers
             Class.Sosyal = sosyal;
             return View(Class);
         }
-
-        public IActionResult Privacy()
+        public IActionResult Blog()
         {
-            return View();
+            var site = _context.Site.ToList();
+            var blog = _context.Blog.ToList();
+            var sosyal = _context.Sosyal.ToList();
+            var Class = new Alldata();
+            Class.Site = site;
+            Class.Blog = blog;
+            Class.Sosyal = sosyal;
+            return View(Class);
+        }
+
+        public IActionResult Arsiv()
+        {
+            var site = _context.Site.ToList();
+            var foto = _context.Foto.ToList();
+            var sosyal = _context.Sosyal.ToList();
+            var Class = new Alldata();
+            Class.Foto = foto;
+            Class.Site = site;
+            Class.Sosyal = sosyal;
+            return View(Class);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
